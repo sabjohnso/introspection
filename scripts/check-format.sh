@@ -4,7 +4,7 @@ set -eu
 readonly scriptpath=$0;
 readonly scriptdir=$(dirname $0)
 readonly srcdir=$scriptdir/../introspection
-readonly testdir=$scriptdir/../introspection
+readonly testdir=$scriptdir/../introspection_testing
 
 function main(){
     format_files $srcdir
