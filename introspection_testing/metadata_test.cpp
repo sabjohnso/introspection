@@ -230,4 +230,19 @@ namespace introspection::testing {
     EXPECT_EQ(member_count<Example_with_metadata>, 3);
   }
 
+  TEST(metadata, member_type)
+  {
+    EXPECT_TRUE((std::is_same_v<Member_type<Example_with_metadata, 0>, int>));
+    EXPECT_TRUE((std::is_same_v<Member_type<Example_with_metadata, 1>, int>));
+    EXPECT_TRUE(
+      (std::is_same_v<Member_type<Example_with_metadata, 2>, double>));
+  }
+
+  TEST(metadata, member_name)
+  {
+    EXPECT_EQ((member_name<Example_with_metadata, 0>), std::string_view("a"));
+    EXPECT_EQ((member_name<Example_with_metadata, 1>), std::string_view("b"));
+    EXPECT_EQ((member_name<Example_with_metadata, 2>), std::string_view("c"));
+  }
+
 } // end of namespace introspection::testing

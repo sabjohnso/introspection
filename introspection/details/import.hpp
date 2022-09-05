@@ -11,6 +11,7 @@
 #include <utility>
 
 namespace introspection::details {
+  using std::declval;
   using std::get;
   using std::index_sequence;
   using std::is_member_pointer_v;
