@@ -225,4 +225,9 @@ namespace introspection::testing {
       concepts::Introspective<Example_without_pointers_and_names_same_length>);
   }
 
+  TEST(metadata, member_count)
+  {
+    EXPECT_EQ(member_count<Example_with_metadata>, 3);
+  }
+
 } // end of namespace introspection::testing
