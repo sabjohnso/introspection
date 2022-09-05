@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.12)
 project(introspection VERSION 0.1.0 LANGUAGES C CXX)
 
 option(introspection_BUILD_TESTING "Build the introspection tests" ON)
-set(introspection_CXX_STANDARD 20 "C++ standard for introspection" ON)
+set(introspection_CXX_STANDARD 20 CACHE STRING "C++ standard for introspection")
 
 include(GNUInstallDirs)
 set(introspection_INSTALL_BINDIR ${CMAKE_INSTALL_BINDIR})

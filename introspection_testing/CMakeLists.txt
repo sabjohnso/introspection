@@ -10,3 +10,5 @@ macro(introspection_add_test test_name exe_name)
     CXX_STANDARD ${introspection_CXX_STANDARD})
   add_test(${test_name} ${exe_name})
 endmacro()
+
+introspection_add_test(metadata metadata_test metadata_test.cpp)
