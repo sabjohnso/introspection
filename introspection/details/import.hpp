@@ -4,8 +4,10 @@
 // ... Standard header files
 //
 #include <bits/utility.h>
+#include <cmath>
 #include <concepts>
 #include <string>
+#include <string_view>
 #include <tuple>
 #include <type_traits>
 #include <utility>
@@ -16,9 +18,12 @@ namespace introspection::details {
    using std::index_sequence;
    using std::is_member_pointer_v;
    using std::make_index_sequence;
+   using std::min;
    using std::remove_cvref_t;
    using std::same_as;
+   using std::string_view;
    using std::to_string;
    using std::tuple;
    using std::tuple_size_v;
+   using std::type_identity;
 } // end of namespace introspection::details

@@ -11,5 +11,6 @@ macro(introspection_add_test test_name exe_name)
   add_test(${test_name} ${exe_name})
 endmacro()
 
-introspection_add_test(metadata metadata_test metadata_test.cpp)
 introspection_add_test(macros macros_test macros_test.cpp)
+introspection_add_test(metadata metadata_test metadata_test.cpp)
+introspection_add_test(type_name type_name_test type_name_test.cpp)
