@@ -3,6 +3,7 @@
 //
 // ... Standard header files
 //
+#include <algorithm>
 #include <bits/utility.h>
 #include <cmath>
 #include <concepts>
@@ -16,8 +17,10 @@ namespace introspection::details {
    using std::declval;
    using std::get;
    using std::index_sequence;
+   using std::is_enum_v;
    using std::is_member_pointer_v;
    using std::make_index_sequence;
+   using std::max;
    using std::min;
    using std::remove_cvref_t;
    using std::same_as;
