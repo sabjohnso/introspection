@@ -4,6 +4,7 @@
 // ... Standard header files
 //
 #include <algorithm>
+#include <array>
 #include <bits/utility.h>
 #include <cmath>
 #include <concepts>
@@ -14,6 +15,7 @@
 #include <utility>
 
 namespace introspection::details {
+   using std::array;
    using std::declval;
    using std::get;
    using std::index_sequence;

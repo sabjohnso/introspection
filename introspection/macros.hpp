@@ -33,3 +33,15 @@
       static constexpr ::std::tuple member_names{                              \
         __S_MEMBER_NAMES(__VA_ARGS__)};                                        \
    }
+
+#define INTROSPECTION_ENUM_DATA(name, ...)                                     \
+   constexpr auto enum_metadata_function(::std::type_identity<name>) {         \
+      struct Enum_metadata {                                                   \
+         using enum name;                                                      \
+         constexpr auto                                                        \
+         enum_values() const {                                                 \
+            return ::std::array{__VA_ARGS__};                                  \
+         }                                                                     \
+      };                                                                       \
+      return Enum_metadata{};                                                  \
+   }

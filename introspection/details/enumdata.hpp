@@ -63,4 +63,44 @@ namespace introspection::details {
      unqualified_type_name<decltype(value)>,
      enum_value_name<value>);
 
+   struct enum_metadata_fn {
+      template<Enum T>
+      constexpr auto
+      operator()(type_identity<T>) const {
+         return enum_metadata_function(type_identity<T>{});
+      }
+   };
+
+   template<typename T>
+   constexpr T static_const{};
+
+   constexpr const auto& enum_metadata = static_const<enum_metadata_fn>;
+
+   template<Enum T>
+   constexpr auto
+     enum_value_count = size(enum_metadata(type_identity<T>{}).enum_values());
+
+   template<Enum T>
+   constexpr auto enum_values = enum_metadata(type_identity<T>{}).enum_values();
+
+   template<Enum T>
+   constexpr auto enum_value_names = []<auto... I>(index_sequence<I...>) {
+      return array{enum_value_name<enum_values<T>[ I ]>...};
+   }
+   (make_index_sequence<enum_value_count<T>>());
+
+   template<Enum T>
+   constexpr auto
+     type_qualified_enum_value_names = []<auto... I>(index_sequence<I...>) {
+      return array{type_qualified_enum_value_name<enum_values<T>[ I ]>...};
+   }
+   (make_index_sequence<enum_value_count<T>>());
+
+   template<Enum T>
+   constexpr auto
+     unqualified_enum_value_names = []<auto... I>(index_sequence<I...>) {
+      return array{unqualified_enum_value_name<enum_values<T>[ I ]>...};
+   }
+   (make_index_sequence<enum_value_count<T>>());
+
 } // end of namespace introspection::details
