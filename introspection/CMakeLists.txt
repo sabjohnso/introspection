@@ -9,7 +9,7 @@ target_include_directories(introspection_header
   $<INSTALL_INTERFACE:${introspection_INSTALL_INCLUDEDIR}>)
 
 add_library(introspection::header ALIAS introspection_header)
-  
+
 install(TARGETS introspection_header
   EXPORT introspection_EXPORTS
   RUNTIME DESTINATION ${introspection_INSTALL_BINDIR}
@@ -18,4 +18,11 @@ install(TARGETS introspection_header
 
 install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/config.hpp
+  introspection.hpp
+  macros.hpp
   DESTINATION ${introspection_INSTALL_INCLUDEDIR}/introspection)
+
+install(DIRECTORY details
+  details
+  DESTINATION ${introspection_INSTALL_INCLUDEDIR}/introspection
+  FILES_MATCHING PATTERN "*.hpp")

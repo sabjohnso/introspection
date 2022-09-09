@@ -1,0 +1,4 @@
+#+TITLE: Introspection
+
+* Overview
+**Introspection** is a C++ library providing some light compile-time introspection for aggregate classes and enumerations.
