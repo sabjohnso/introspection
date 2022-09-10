@@ -5,7 +5,6 @@
 //
 #include <algorithm>
 #include <array>
-#include <bits/utility.h>
 #include <cmath>
 #include <concepts>
 #include <string>
