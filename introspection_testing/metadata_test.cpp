@@ -2,7 +2,6 @@
 // ... Standard header files
 //
 #include <array>
-#include <bits/utility.h>
 #include <iostream>
 #include <string_view>
 #include <tuple>
@@ -66,8 +65,7 @@ namespace introspection::testing {
    };
 
    TEST(metadata, introspective_fail_without_member_pointers) {
-      ASSERT_FALSE(
-        concepts::Introspective<Example_without_member_pointers>);
+      ASSERT_FALSE(concepts::Introspective<Example_without_member_pointers>);
    }
 
    struct Example_without_member_pointers_tuple {
@@ -106,9 +104,8 @@ namespace introspection::testing {
    TEST(
      metadata,
      introspective_fail_without_member_pointers_are_member_pointers) {
-      ASSERT_FALSE(
-        concepts::Introspective<
-          Example_without_member_pointers_are_member_pointers>);
+      ASSERT_FALSE(concepts::Introspective<
+                   Example_without_member_pointers_are_member_pointers>);
    }
 
    struct Example_without_member_names {
@@ -125,8 +122,7 @@ namespace introspection::testing {
    };
 
    TEST(metadata, introspective_fail_without_member_names) {
-      ASSERT_FALSE(
-        concepts::Introspective<Example_without_member_names>);
+      ASSERT_FALSE(concepts::Introspective<Example_without_member_names>);
    }
 
    struct Example_without_memeber_names_tuple {
@@ -164,11 +160,9 @@ namespace introspection::testing {
       };
    };
 
-   TEST(
-     metadata,
-     introspective_fail_without_member_names_are_string_like) {
-      EXPECT_FALSE(concepts::Introspective<
-                   Example_without_memeber_names_are_string_like>);
+   TEST(metadata, introspective_fail_without_member_names_are_string_like) {
+      EXPECT_FALSE(
+        concepts::Introspective<Example_without_memeber_names_are_string_like>);
    }
 
    struct Example_without_pointers_and_names_same_length {
@@ -186,8 +180,7 @@ namespace introspection::testing {
            &Example_with_metadata::b,
            &Example_with_metadata::c};
 
-         static_assert([
-         ]<auto... Index>(std::index_sequence<Index...>) {
+         static_assert([]<auto... Index>(std::index_sequence<Index...>) {
             return (
               std::is_member_pointer_v<std::remove_cvref_t<
                 decltype(std::get<Index>(member_pointers))>> &&
@@ -200,9 +193,7 @@ namespace introspection::testing {
       };
    };
 
-   TEST(
-     metadata,
-     introspective_fail_without_pointers_and_names_same_length) {
+   TEST(metadata, introspective_fail_without_pointers_and_names_same_length) {
       EXPECT_FALSE(concepts::Introspective<
                    Example_without_pointers_and_names_same_length>);
    }
@@ -212,24 +203,16 @@ namespace introspection::testing {
    }
 
    TEST(metadata, member_type) {
+      EXPECT_TRUE((std::is_same_v<Member_type<Example_with_metadata, 0>, int>));
+      EXPECT_TRUE((std::is_same_v<Member_type<Example_with_metadata, 1>, int>));
       EXPECT_TRUE(
-        (std::is_same_v<Member_type<Example_with_metadata, 0>, int>));
-      EXPECT_TRUE(
-        (std::is_same_v<Member_type<Example_with_metadata, 1>, int>));
-      EXPECT_TRUE((
-        std::is_same_v<Member_type<Example_with_metadata, 2>, double>));
+        (std::is_same_v<Member_type<Example_with_metadata, 2>, double>));
    }
 
    TEST(metadata, member_name) {
-      EXPECT_EQ(
-        (member_name<Example_with_metadata, 0>),
-        std::string_view("a"));
-      EXPECT_EQ(
-        (member_name<Example_with_metadata, 1>),
-        std::string_view("b"));
-      EXPECT_EQ(
-        (member_name<Example_with_metadata, 2>),
-        std::string_view("c"));
+      EXPECT_EQ((member_name<Example_with_metadata, 0>), std::string_view("a"));
+      EXPECT_EQ((member_name<Example_with_metadata, 1>), std::string_view("b"));
+      EXPECT_EQ((member_name<Example_with_metadata, 2>), std::string_view("c"));
    }
 
 } // end of namespace introspection::testing
