@@ -23,6 +23,6 @@ namespace introspection::details {
      get<Index>(T::Metadata::member_names);
 
    template<concepts::Introspective T, auto Index>
-   constexpr auto member_pointer = get<Index>(T::metadata::member_pointers);
+   constexpr auto member_pointer = get<Index>(T::Metadata::member_pointers);
 
 } // end of namespace introspection::details
