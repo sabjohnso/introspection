@@ -22,7 +22,7 @@ install(FILES
   macros.hpp
   DESTINATION ${introspection_INSTALL_INCLUDEDIR}/introspection)
 
-install(DIRECTORY details
+ install(DIRECTORY details
   details
   DESTINATION ${introspection_INSTALL_INCLUDEDIR}/introspection
   FILES_MATCHING PATTERN "*.hpp")

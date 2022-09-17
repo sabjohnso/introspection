@@ -23,6 +23,7 @@ namespace introspection {
    using ::introspection::details::enum_values;
    using ::introspection::details::member_count;
    using ::introspection::details::member_name;
+   using ::introspection::details::member_pointer;
    using ::introspection::details::Member_type;
    using ::introspection::details::type_name;
    using ::introspection::details::type_qualified_enum_value_name;

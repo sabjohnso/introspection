@@ -19,8 +19,10 @@ namespace introspection::details {
      }(declval<T>(), get<Index>(T::Metadata::member_pointers)))>;
 
    template<concepts::Introspective T, auto Index>
-   requires(
-     Index >= 0 && Index < member_count<T>) constexpr auto member_name =
+   requires(Index >= 0 && Index < member_count<T>) constexpr auto member_name =
      get<Index>(T::Metadata::member_names);
+
+   template<concepts::Introspective T, auto Index>
+   constexpr auto member_pointer = get<Index>(T::metadata::member_pointers);
 
 } // end of namespace introspection::details
