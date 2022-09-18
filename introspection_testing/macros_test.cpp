@@ -41,6 +41,15 @@ namespace introspection::testing {
       ASSERT_TRUE((std::same_as<Member_type<Thing, 2>, double>));
    }
 
+   TEST(macro, introspective_enum) {
+      ASSERT_TRUE(concepts::Introspective_enum<myenum>);
+   }
+
+   enum class not_introspective { a, b };
+   TEST(macro, not_introspective_enum) {
+      ASSERT_FALSE(concepts::Introspective_enum<not_introspective>);
+   }
+
    TEST(macro, enum_value_count) { ASSERT_EQ(enum_value_count<myenum>, 3); }
    TEST(macro, enum_values) {
       ASSERT_EQ(enum_values<myenum>[ 0 ], myenum::first_value);

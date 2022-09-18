@@ -75,7 +75,10 @@ namespace introspection::details::concepts {
       tuple_size_v<decltype(T::Metadata::member_names)>);
 
    template<typename T>
-   concept Eunm_metadata = requires {
+   concept Enum = is_enum_v<T>;
+
+   template<typename T>
+   concept Enum_metadata = requires {
       T::enum_values;
    };
 

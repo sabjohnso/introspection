@@ -63,6 +63,10 @@ namespace introspection::details {
      unqualified_type_name<decltype(value)>,
      enum_value_name<value>);
 
+   template<typename T>
+   void
+   enum_metadata_function(type_identity<T>) {}
+
    struct enum_metadata_fn {
       template<Enum T>
       constexpr auto
