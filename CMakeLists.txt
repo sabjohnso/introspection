@@ -2,7 +2,9 @@ cmake_minimum_required(VERSION 3.12)
 
 project(introspection VERSION 1.1.0 LANGUAGES CXX)
 
-option(introspection_BUILD_TESTING "Build the introspection tests" ON)
+if(PROJECT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
+  option(introspection_BUILD_TESTING "Build the introspection tests" ON)
+endif()
 option(introspection_INSTALL_WITH_VERSION "Instrall introspection in a version specific directory" OFF)
 set(introspection_CXX_STANDARD 20 CACHE STRING "C++ standard for introspection")
 
