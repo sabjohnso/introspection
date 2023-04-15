@@ -87,4 +87,28 @@ namespace introspection::testing {
         "myenum::third_value");
    }
 
+   TEST(macro, terse_printing_enum_value) {
+      using terse::operator<<;
+      static_assert(concepts::Introspective_enum<myenum>);
+      std::ostringstream ss{};
+      static_cast<std::ostream&>(ss) << myenum::first_value;
+      ASSERT_EQ(ss.str(), "first_value");
+   }
+
+   TEST(macro, verbose_printing_enum_value) {
+      using verbose::operator<<;
+      static_assert(concepts::Introspective_enum<myenum>);
+      std::ostringstream ss{};
+      static_cast<std::ostream&>(ss) << myenum::first_value;
+      ASSERT_EQ(ss.str(), "introspection::testing::myenum::first_value");
+   }
+
+   TEST(macro, type_qualified_printing_enum_value) {
+      using type_qualified::operator<<;
+      static_assert(concepts::Introspective_enum<myenum>);
+      std::ostringstream ss{};
+      static_cast<std::ostream&>(ss) << myenum::first_value;
+      ASSERT_EQ(ss.str(), "myenum::first_value");
+   }
+
 } // end of namespace introspection::testing

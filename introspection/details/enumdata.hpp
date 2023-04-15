@@ -54,8 +54,8 @@ namespace introspection::details {
    constexpr string_view enum_value_name = lookup_value_name<value>();
 
    template<Enum auto value>
-   constexpr string_view
-     unqualified_enum_value_name = remove_qualification(enum_value_name<value>);
+   constexpr string_view unqualified_enum_value_name =
+     remove_qualification(enum_value_name<value>);
 
    template<Enum auto value>
    constexpr string_view type_qualified_enum_value_name = enum_type_and_name(
@@ -81,8 +81,8 @@ namespace introspection::details {
    constexpr const auto& enum_metadata = static_const<enum_metadata_fn>;
 
    template<Enum T>
-   constexpr auto
-     enum_value_count = size(enum_metadata(type_identity<T>{}).enum_values());
+   constexpr auto enum_value_count =
+     size(enum_metadata(type_identity<T>{}).enum_values());
 
    template<Enum T>
    constexpr auto enum_values = enum_metadata(type_identity<T>{}).enum_values();
@@ -94,15 +94,15 @@ namespace introspection::details {
    (make_index_sequence<enum_value_count<T>>());
 
    template<Enum T>
-   constexpr auto
-     type_qualified_enum_value_names = []<auto... I>(index_sequence<I...>) {
+   constexpr auto type_qualified_enum_value_names =
+     []<auto... I>(index_sequence<I...>) {
       return array{type_qualified_enum_value_name<enum_values<T>[ I ]>...};
    }
    (make_index_sequence<enum_value_count<T>>());
 
    template<Enum T>
-   constexpr auto
-     unqualified_enum_value_names = []<auto... I>(index_sequence<I...>) {
+   constexpr auto unqualified_enum_value_names =
+     []<auto... I>(index_sequence<I...>) {
       return array{unqualified_enum_value_name<enum_values<T>[ I ]>...};
    }
    (make_index_sequence<enum_value_count<T>>());
