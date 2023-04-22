@@ -2,6 +2,10 @@
 //
 // ... standard header files
 //
+#include <array>
+
+//
+// ... external header files
 #include <boost/preprocessor.hpp>
 #include <string_view>
 
