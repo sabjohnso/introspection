@@ -9,6 +9,7 @@
 #include <boost/preprocessor.hpp>
 #include <string_view>
 
+#define __S_FORCE_SEMICOLON() static_assert(true)
 #define __S_QUOTE_AUX(...) #__VA_ARGS__
 #define __S_QUOTE(a, b, ...)                                                   \
    std::string_view { __S_QUOTE_AUX(__VA_ARGS__) }
@@ -48,4 +49,5 @@
          }                                                                     \
       };                                                                       \
       return Enum_metadata{};                                                  \
-   }
+   }                                                                           \
+   __S_FORCE_SEMICOLON()
